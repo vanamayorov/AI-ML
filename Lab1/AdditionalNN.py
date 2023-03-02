@@ -14,9 +14,9 @@ class AdditionalNN:
         return self.sigmoid(self.prediction_output)
 
     def train(self, inputs, expected_predict):
-        outputs = self.sigmoid(np.dot(self.weights, np.array(inputs)))
-        error = expected_predict - outputs
-        weights_delta = error * self.sigmoid(outputs) * (1 - self.sigmoid(outputs))
+        output = self.sigmoid(np.dot(self.weights, np.array(inputs)))
+        error = expected_predict - output
+        weights_delta = error * output * (1 - output)
         self.weights += np.dot(weights_delta, inputs.reshape(1, len(inputs)))
 
     def start_training(self, epochs, data):

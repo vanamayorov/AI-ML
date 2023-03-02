@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     print('NeuralNetwork results on test data: ')
     for input_stat, correct_predict in transformed_data_to_predict:
-        network.predict(np.array(input_stat).T)
+        network.predict(input_stat)
         print("Expected: {}, Result: {}, Difference: {}".format(
             str(correct_predict),
             str(network.prediction_output),
