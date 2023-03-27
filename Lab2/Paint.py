@@ -17,6 +17,7 @@ class Paint(Frame):
         self.last_save_file = None
         self.nn = nn
         self.prediction = None
+        self.img_counter = 0
         self.setUI()
 
     def draw(self, event):
@@ -45,11 +46,12 @@ class Paint(Frame):
         recognize_btn.grid(row=0, column=4, sticky=W)
 
     def refresh_letter_prediction(self, prediction):
-        result = Label(self, text=f'Prediction: {prediction}')
+        result = Label(self, text=f'Prediction: {prediction}', font=('Arial', 20))
         result.grid(row=1, column=1)
 
     def save_paint(self):
-        filename = './drawings/my_drawing' + str(randint(0, 1000))
+        filename = './drawings/my_drawing' + str(self.img_counter)
+        self.img_counter += 1
         self.last_save_file = filename + '.png'
         self.canv.postscript(file=filename + '.eps')
 

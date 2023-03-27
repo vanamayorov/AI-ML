@@ -21,13 +21,12 @@ class NeuralNetwork:
 
     def init_model(self):
         if os.path.exists('letters.model'):
-            if keras.models.load_model('letters.model'):
-                self.model = keras.models.load_model('letters.model')
+            self.model = keras.models.load_model('letters.model')
         else:
             model = keras.Sequential([
-                Flatten(input_shape=(28, 28)),
+                Flatten(input_shape=(28, 28, 1)),
                 Dense(128, activation='relu'),
-                Dense(128, activation='sigmoid'),
+                Dense(128, activation='relu'),
                 Dense(27, activation='softmax')
             ])
             self.model = model
@@ -46,4 +45,5 @@ class NeuralNetwork:
         image = cv2.imread(filename)[:, :, 0]
         image = np.invert(np.array([image]))
         prediction = self.model.predict(image)
+        print(prediction)
         return self.letters_dict[np.argmax(prediction)]
