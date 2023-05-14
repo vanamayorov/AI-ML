@@ -13,5 +13,6 @@ def main():
     app = Paint(root, nn)
     root.mainloop()
 
+
 if __name__ == '__main__':
     main()
