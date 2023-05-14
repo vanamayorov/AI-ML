@@ -24,7 +24,7 @@ class NeuralNetwork:
             self.model = keras.models.load_model('letters.model')
         else:
             model = keras.Sequential([
-                Flatten(input_shape=(28, 28, 1)),
+                Flatten(input_shape=(28, 28)),
                 Dense(128, activation='relu'),
                 Dense(128, activation='relu'),
                 Dense(27, activation='softmax')
